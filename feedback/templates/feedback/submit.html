@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback & Complaint Form | CampusCare</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'js/script.js' %}" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo">CampusCare</h1>
+        <p class="tagline">Submit your feedback or complaint securely</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        <section class="form-section">
+          <h2>Feedback / Complaint Form</h2>
+
+          {% if success %}
+          <div class="alert success-message">
+            ✅ Your submission has been received.
+          </div>
+          {% endif %}
+
+          <form method="POST" novalidate>
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="submit-button">Submit</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 CampusCare | Final Year Project</p>
+      </div>
+    </footer>
+  </body>
+</html>
